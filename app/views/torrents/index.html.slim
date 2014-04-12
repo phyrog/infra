@@ -1,0 +1,23 @@
+h1 Listing torrents
+
+table
+  thead
+    tr
+      th Name
+      th Description
+      th
+      th
+      th
+
+  tbody
+    - @torrents.each do |torrent|
+      tr
+        td = torrent.name
+        td = torrent.description
+        td = link_to 'Show', torrent
+        td = link_to 'Edit', edit_torrent_path(torrent)
+        td = link_to 'Destroy', torrent, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+br
+
+= link_to 'New Torrent', new_torrent_path

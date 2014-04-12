@@ -1,0 +1,12 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @torrent.name
+p
+  strong Description:
+  = @torrent.description
+
+= link_to 'Edit', edit_torrent_path(@torrent)
+'|
+= link_to 'Back', torrents_path
