@@ -1,12 +1,8 @@
 p#notice = notice
 
-p
-  strong Name:
-  = @torrent.name
-p
-  strong Description:
-  = @torrent.description
+h2= @torrent.name
+p= @torrent.description
 
-= link_to 'Edit', edit_torrent_path(@torrent)
-'|
-= link_to 'Back', torrents_path
+ul.button-group
+  li= link_to 'Edit', edit_torrent_path(@torrent), class: "tiny button"
+  li= link_to 'Back', torrents_path, class: "tiny button"
