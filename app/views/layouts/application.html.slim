@@ -12,5 +12,7 @@ html
         li.name
           h1= link_to("infra", root_path)
     .row
+      .large-12.columns= display_flash_messages
+    .row
       .large-12.columns
         = yield

@@ -12,6 +12,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
 gem 'jquery-fileupload-rails'
 gem 'foundation-rails'
+gem 'foundation_rails_helper'
 gem 'turbolinks'
 
 gem 'jbuilder', '~> 1.2'
