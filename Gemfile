@@ -10,12 +10,14 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'uglifier', '>= 1.3.0'
 
 gem 'jquery-rails'
+gem 'jquery-fileupload-rails'
 gem 'foundation-rails'
 gem 'turbolinks'
 
 gem 'jbuilder', '~> 1.2'
 
 gem 'torrent-ruby', '>= 0.1.6'
+gem 'dragonfly', '~> 1.0.4'
 
 group :development do
   gem 'better_errors'

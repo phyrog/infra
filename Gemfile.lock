@@ -57,6 +57,9 @@ GEM
       multi_test (>= 0.1.1)
     debug_inspector (0.0.2)
     diff-lcs (1.2.5)
+    dragonfly (1.0.4)
+      multi_json (~> 1.0)
+      rack
     erubis (2.7.0)
     execjs (2.0.2)
     foundation-rails (5.2.2.0)
@@ -69,6 +72,9 @@ GEM
     jbuilder (1.5.3)
       activesupport (>= 3.0.0)
       multi_json (>= 1.2.0)
+    jquery-fileupload-rails (0.4.1)
+      actionpack (>= 3.1)
+      railties (>= 3.1)
     jquery-rails (3.1.0)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
@@ -168,8 +174,10 @@ DEPENDENCIES
   capybara-webkit
   coffee-rails (~> 4.0.0)
   cucumber
+  dragonfly (~> 1.0.4)
   foundation-rails
   jbuilder (~> 1.2)
+  jquery-fileupload-rails
   jquery-rails
   rails (= 4.0.4)
   rspec-rails
