@@ -12,6 +12,7 @@
   .field
     = f.label :description
     = f.text_area :description
+    = f.hidden_field :file_uid
   ul.button-group
     li= f.submit 'Save', class: "tiny button"
     - buttons.each do |button|

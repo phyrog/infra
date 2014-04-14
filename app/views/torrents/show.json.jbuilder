@@ -1,1 +1,1 @@
-json.extract! @torrent, :id, :name, :description, :created_at, :updated_at
+json.extract! @torrent, :id, :name, :description, :file_uid

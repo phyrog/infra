@@ -26,13 +26,24 @@ class TorrentsController < ApplicationController
   def create
     @torrent = Torrent.new(torrent_params)
 
-    respond_to do |format|
-      if @torrent.save
-        format.html { redirect_to @torrent, notice: 'Torrent was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @torrent }
-      else
+    if not torrent_params[:name] or not torrent_params[:description]
+      @torrent.file = Dragonfly.app.fetch(@torrent.file_uid) if @torrent.file_uid
+      @torrent.file_uid = @torrent.file.job.store if @torrent.file
+      @torrent.name = @torrent.file.data.bdecode["info"]["name"] if @torrent.file
+      @torrent.description = @torrent.file.data.bdecode["comment"] if @torrent.file
+      respond_to do |format|
         format.html { render action: 'new' }
-        format.json { render json: @torrent.errors, status: :unprocessable_entity }
+        format.json { render action: 'show', location: @torrent }
+      end
+    else
+      respond_to do |format|
+        if @torrent.save
+          format.html { redirect_to @torrent, notice: 'Torrent was successfully created.' }
+          format.json { render action: 'show', status: :created, location: @torrent }
+        else
+          format.html { render action: 'new' }
+          format.json { render json: @torrent.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
@@ -69,6 +80,6 @@ class TorrentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def torrent_params
-      params.require(:torrent).permit(:name, :description)
+      params.require(:torrent).permit(:name, :description, :file, :file_uid)
     end
 end

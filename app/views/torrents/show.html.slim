@@ -3,6 +3,8 @@ p#notice = notice
 h2= @torrent.name
 p= @torrent.description
 
+= link_to "Download Torrent", @torrent.file.personalize.url, target: "_blank" if @torrent.file
+
 ul.button-group
   li= link_to 'Edit', edit_torrent_path(@torrent), class: "tiny button"
   li= link_to 'Back', torrents_path, class: "tiny button"

@@ -18,6 +18,6 @@ table
         td = link_to 'Edit', edit_torrent_path(torrent)
         td = link_to 'Destroy', torrent, data: {:confirm => 'Are you sure?'}, :method => :delete
 
-br
+= render 'upload_form'
 
 = link_to 'New Torrent', new_torrent_path, class: "tiny button"
