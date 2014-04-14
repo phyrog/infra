@@ -7,7 +7,7 @@ jQuery ->
     dataType: 'json'
     add: (e, data) ->
       data.context = $(tmpl("template-upload", data.files[0]))
-      $("#torrent_file").append(data.context)
+      $("#new_torrent").append(data.context)
       data.submit()
     progress: (e, data) ->
       if data.context

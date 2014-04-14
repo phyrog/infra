@@ -12,11 +12,6 @@ class TorrentsController < ApplicationController
   def show
   end
 
-  # GET /torrents/new
-  def new
-    @torrent = Torrent.new
-  end
-
   # GET /torrents/1/edit
   def edit
   end

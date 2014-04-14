@@ -1,5 +1,5 @@
 Infra::Application.routes.draw do
-  resources :torrents
+  resources :torrents, except: [:new]
   root 'torrents#index'
 
   # The priority is based upon order of creation: first created -> highest priority.

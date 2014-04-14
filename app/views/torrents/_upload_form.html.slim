@@ -1,11 +1,12 @@
 = form_for Torrent.new, url: torrents_path(format: 'json'), html: { id: "upload_torrent" } do |f|
   .field
-    = f.label :file
-    = f.file_field :file
+    .tiny.button.fileinput-button
+      | Upload torrent
+      = f.file_field :file, label: false
 = form_for Torrent.new do |f|
   = f.hidden_field :file_uid
 
 script#template-upload type="text/x-tmpl"
   .progress
-    span.meter style="width: 0%"
+    span.meter
 
