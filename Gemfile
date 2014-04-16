@@ -33,6 +33,7 @@ group :test do
   gem 'capybara-webkit'
   gem 'launchy'
   gem 'database_cleaner'
+  gem 'simplecov'
 end
 
 group :doc do
