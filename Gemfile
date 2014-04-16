@@ -21,6 +21,7 @@ gem 'torrent-ruby', '>= 0.1.6'
 gem 'dragonfly', '~> 1.0.4'
 
 gem 'filesize', '~> 0.0.3'
+gem 'fuzzily'
 
 group :development do
   gem 'better_errors'

@@ -4,7 +4,14 @@ class TorrentsController < ApplicationController
   # GET /torrents
   # GET /torrents.json
   def index
-    @torrents = Torrent.all
+    if params[:q]
+      torrents = Torrent.find_by_fuzzy_name(params[:q]) +
+                 Torrent.find_by_fuzzy_description(params[:q]) +
+                 Torrent.find_by_fuzzy_files(params[:q])
+      @torrents = Torrent.where('id in (?)', torrents.map(&:id))
+    else
+      @torrents = Torrent.all
+    end
   end
 
   # GET /torrents/1

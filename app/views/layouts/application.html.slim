@@ -11,6 +11,15 @@ html
       ul.title-area
         li.name
           h1= link_to("infra", root_path)
+      ul.left
+        li.has-form
+          = form_tag "/search", method: "get", class: "row collapse"
+            .large-8.columns
+              = text_field_tag :q, params[:q], placeholder: "Search"
+            .large-4.columns
+              = submit_tag "Search", class: "button expand"
+
+        
       ul.right
         li.has-form
           = render 'torrents/upload_form'
