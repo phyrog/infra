@@ -4,18 +4,19 @@ table
   thead
     tr
       th Name
-      th Description
-      th
-      th
-      th
+      th Size
+      th Files
+      th Uploaded
+      th Seeders
+      th Leechers
 
   tbody
     - @torrents.each do |torrent|
       tr
-        td = torrent.name
-        td = torrent.description
-        td = link_to 'Show', torrent
-        td = link_to 'Edit', edit_torrent_path(torrent)
-        td = link_to 'Destroy', torrent, data: {:confirm => 'Are you sure?'}, :method => :delete
-
-= render 'upload_form'
+        td= link_to torrent.name, torrent
+        td= torrent.formatted_size
+        td= torrent.no_files
+        td
+          time datetime="#{torrent.created_at.to_time.iso8601}" #{torrent.created_at}
+        td
+        td

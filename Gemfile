@@ -20,6 +20,8 @@ gem 'jbuilder', '~> 1.2'
 gem 'torrent-ruby', '>= 0.1.6'
 gem 'dragonfly', '~> 1.0.4'
 
+gem 'filesize', '~> 0.0.3'
+
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'

@@ -1,0 +1,45 @@
+@import 'foundation_and_overrides';
+@import 'torrents';
+
+#upload_torrent {
+  margin-right: 0.5rem;
+}
+
+form textarea {
+  min-width: 100%;
+  max-width: 100%;
+}
+
+dl.tabs {
+  @include button-group-container();
+  dd {
+    @include button-group-style();
+    &.active {
+      a {
+        background-color: darken($primary-color, 7%);
+      }
+    }
+
+    a {
+      @include button;
+      @include button-size($padding:$button-sml);
+      border-right: 1px solid rgba(255, 255, 255, 0.5) !important;
+      margin-bottom: 0;
+
+    }
+
+    &:last-of-type a {
+      border-right: 0 !important;
+    }
+  }
+}
+
+.tabs-content {
+  background-color: lighten($secondary-color, 5%);
+  padding: 1rem;
+  border: 1px solid #dddddd;
+}
+
+table {
+  width: 100%;
+}

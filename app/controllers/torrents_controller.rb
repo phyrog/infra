@@ -24,8 +24,8 @@ class TorrentsController < ApplicationController
     if not torrent_params[:name] or not torrent_params[:description]
       @torrent.file = Dragonfly.app.fetch(@torrent.file_uid) if @torrent.file_uid
       @torrent.file_uid = @torrent.file.job.store if @torrent.file
-      @torrent.name = @torrent.file.data.bdecode["info"]["name"] if @torrent.file
-      @torrent.description = @torrent.file.data.bdecode["comment"] if @torrent.file
+      @torrent.name = @torrent.to_h["info"]["name"] if @torrent.file
+      @torrent.description = @torrent.to_h["comment"] if @torrent.file
       respond_to do |format|
         format.html { render action: 'new' }
         format.json { render action: 'show', location: @torrent }

@@ -69,6 +69,7 @@ GEM
       rack
     erubis (2.7.0)
     execjs (2.0.2)
+    filesize (0.0.3)
     foundation-rails (5.2.2.0)
       railties (>= 3.1.0)
       sass (>= 3.2.0)
@@ -188,6 +189,7 @@ DEPENDENCIES
   cucumber-rails
   database_cleaner
   dragonfly (~> 1.0.4)
+  filesize (~> 0.0.3)
   foundation-rails
   foundation_rails_helper
   jbuilder (~> 1.2)

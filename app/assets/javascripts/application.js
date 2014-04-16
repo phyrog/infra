@@ -14,8 +14,16 @@
 //= require jquery_ujs
 //= require jquery-fileupload/basic
 //= require jquery-fileupload/vendor/tmpl
+//= require jqTree/tree.jquery
+//= require jquery.timeago
 //= require foundation
 //= require turbolinks
 //= require_tree .
 
-$(function(){ $(document).foundation(); });
+var ready = function(){
+  $(document).foundation();
+  $("time").timeago();
+};
+
+$(document).ready(ready);
+$(document).on('page:load', ready);

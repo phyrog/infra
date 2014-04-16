@@ -1,8 +1,37 @@
 h2= @torrent.name
-p= @torrent.description
 
-= link_to "Download Torrent", @torrent.file.personalize.url, target: "_blank" if @torrent.file
+ul.right.button-group
+  li= link_to 'Edit', edit_torrent_path(@torrent), class: "small button"
+  li= link_to "Download Torrent", @torrent.file.personalize.url, target: "_blank", class: "small button" if @torrent.file
 
-ul.button-group
-  li= link_to 'Edit', edit_torrent_path(@torrent), class: "tiny button"
-  li= link_to 'Back', torrents_path, class: "tiny button"
+dl.tabs(data-tab)
+  dd.active
+    a href="#description" Description
+  dd
+    a href="#filelist" Files
+  dd
+    a href="#comments" Comments
+.tabs-content
+  .content.active#description
+    .row
+      .large-9.columns#description_text= simple_format @torrent.description
+      .large-3.columns
+        table style="width: 100%"
+          tr
+            th Size
+            td= @torrent.formatted_size
+          tr
+            th Files
+            td= @torrent.no_files
+          tr
+            th Uploaded
+            td 
+              time datetime="#{@torrent.created_at.to_time.iso8601}" #{@torrent.created_at}
+          tr
+            th Seeders
+            td
+          tr
+            th Leechers
+            td
+  .content#filelist= formatted_file_list(@torrent)
+

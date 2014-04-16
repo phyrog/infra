@@ -1,4 +1,4 @@
 h1 Editing torrent
 
-== render 'form', buttons: [(link_to 'Show', @torrent, class: "tiny button"), (link_to 'Back', torrents_path, class: "tiny button")]
+== render 'form', buttons_left: [(link_to 'Show', @torrent, class: "tiny button"), (link_to 'Back', torrents_path, class: "tiny button")], buttons_right: [(link_to 'Destroy', @torrent, data: {:confirm => 'Are you sure?'}, :method => :delete, class: "tiny button")]
 

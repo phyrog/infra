@@ -2,7 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-jQuery ->
+ready = ->
   $("#torrent_file").fileupload
     dataType: 'json'
     add: (e, data) ->
@@ -16,3 +16,15 @@ jQuery ->
     done: (e, data) ->
       $("#torrent_file_uid").val(data.result.file_uid)
       $("#new_torrent").submit()
+  $("#filelist li:even").css('background-color', '#ffffff')
+  $("#filelist ul > ul").each () ->
+    bc = 'rgb(255, 255, 255)'
+    pb = $(this).parent().css 'border-color'
+    if pb == bc
+      $(this).css 'border-color', 'transparent'
+    else
+      $(this).css 'border-color', bc
+
+
+jQuery(document).ready(ready)
+jQuery(document).on('page:load', ready)

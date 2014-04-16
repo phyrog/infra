@@ -18,3 +18,39 @@
     cursor: pointer;
   }
 }
+
+.right.button-group {
+  .button {
+    margin-bottom: 0;
+  }
+}
+
+#description {
+  padding-left: 1rem;
+
+  #description_text {
+    padding: 1rem;
+    background-color: #fff;
+    border: 1px solid #dddddd;
+  }
+}
+
+#filelist {
+  ul {
+    list-style-type: none;
+    font-size: 0.9rem !important;
+    border-left: 0.2rem dotted transparent;
+    margin-left: 0.9rem;
+    margin-bottom: 0;
+    
+    li {
+      span.label {
+        float: right;
+        display: inline-block;
+        width: 5rem;
+        height: 1.3rem;
+        margin-left: 0.05rem;
+      }
+    }
+  }
+}

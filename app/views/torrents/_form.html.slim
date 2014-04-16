@@ -4,8 +4,13 @@
   .field
     = f.text_area :description
     = f.hidden_field :file_uid
-  ul.button-group
+  ul.left.button-group
     li= f.submit 'Save', class: "tiny button"
-    - buttons.each do |button|
-      li= button
-      
+    - if defined? buttons_left
+      - buttons_left.each do |button|
+        li= button
+
+  - if defined? buttons_right
+    ul.right.button-group
+      - buttons_right.each do |button|
+        li= button
