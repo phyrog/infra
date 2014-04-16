@@ -38,21 +38,6 @@ class Torrent < ActiveRecord::Base
     end
   end
 
-  def list_of_files
-    h = self.to_h
-    if h
-      if h["info"]["files"]
-        h["info"]["files"].map do |file|
-          File.join(h["info"]["name"], file["path"])
-        end
-      else
-        [h["info"]["name"]]
-      end
-    else
-      []
-    end
-  end
-
   def tree_of_files
     h = self.to_h
     if h
