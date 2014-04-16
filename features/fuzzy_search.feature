@@ -22,6 +22,7 @@ Feature: Fuzzy search
     When I visit the page
     And I enter into the search bar: "discrebton"
     And I click the button "Search"
+    And I click the link "Some awesome torrent"
     Then I can see the torrent
 
   Scenario: I want to search for a word that matches no torrent
