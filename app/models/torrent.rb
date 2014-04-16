@@ -5,7 +5,7 @@ class Torrent < ActiveRecord::Base
   validates :description, presence: true
   validates :file, presence: true
 
-  fuzzily_searchable :name, :description, :files
+  fuzzily_searchable :name, :description
 
   def to_h
     @hash ||= file.data.bdecode
@@ -28,14 +28,6 @@ class Torrent < ActiveRecord::Base
     else
       1
     end
-  end
-
-  def files
-    self.list_of_files.join
-  end
-
-  def files_changed?
-    file_changed?
   end
 
   def list_of_files
