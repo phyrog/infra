@@ -54,13 +54,15 @@ class TorrentsController < ApplicationController
     respond_to do |format|
       if @torrent.update(torrent_params)
 
-        property_params.each do |param, value|
-          prop = @torrent.properties.find_by(name: param)
-          if prop
-            if val = @torrent.value_of_property(prop)
-              val.update(value: value)
-            else
-              @torrent.property_values.create(value: value, property: prop)
+        if property_params
+          property_params.each do |param, value|
+            prop = @torrent.properties.find_by(name: param)
+            if prop
+              if val = @torrent.value_of_property(prop)
+                val.update(value: value)
+              else
+                @torrent.property_values.create(value: value, property: prop)
+              end
             end
           end
         end
@@ -96,6 +98,6 @@ class TorrentsController < ApplicationController
     end
 
     def property_params
-      params.require(:property)
+      params[:property]
     end
 end
