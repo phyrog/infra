@@ -48,6 +48,18 @@ class TorrentsController < ApplicationController
   def update
     respond_to do |format|
       if @torrent.update(torrent_params)
+
+        property_params.each do |param, value|
+          prop = @torrent.properties.find_by(name: param)
+          if prop
+            if val = @torrent.value_of_property(prop)
+              val.update(value: value)
+            else
+              @torrent.property_values.create(value: value, property: prop)
+            end
+          end
+        end
+
         format.html { redirect_to @torrent, notice: 'Torrent was successfully updated.' }
         format.json { head :no_content }
       else
@@ -76,5 +88,9 @@ class TorrentsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def torrent_params
       params.require(:torrent).permit(:name, :description, :file, :file_uid)
+    end
+
+    def property_params
+      params.require(:property)
     end
 end
