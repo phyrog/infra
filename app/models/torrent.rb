@@ -1,4 +1,11 @@
 class Torrent < ActiveRecord::Base
+
+  has_many :taggings
+  has_many :tags, through: :taggings
+  has_many :tag_properties, through: :tags
+  has_many :properties, through: :tag_properties
+  has_many :property_values
+
   dragonfly_accessor :file
 
   validates :name, presence: true
@@ -6,6 +13,10 @@ class Torrent < ActiveRecord::Base
   validates :file, presence: true
 
   fuzzily_searchable :name
+
+  def value_of_property(prop)
+    self.property_values.find_by(property_id: prop.id)
+  end
 
   def to_h
     @hash ||= file.data.bdecode

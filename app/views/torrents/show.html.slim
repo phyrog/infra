@@ -34,5 +34,10 @@ dl.tabs(data-tab)
           tr
             th Leechers
             td
-  .content#filelist= render 'file_tree', torrent: @torrent
+          - @torrent.properties.uniq.each do |prop|
+            - if val = @torrent.value_of_property(prop) and val.to_s != ""
+              tr
+                th= prop
+                td= val.to_s + prop.postfix.to_s
+  .content#filelist= formatted_file_list(@torrent)
 

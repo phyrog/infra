@@ -3,7 +3,19 @@
     = f.text_field :name
   .field
     = f.text_area :description
-    = f.hidden_field :file_uid
+  - @torrent.properties.uniq.each_slice(3) do |props|
+    .row
+      - props.each do |prop|
+        .large-4.columns class="#{'end' if prop == props.last}"
+          = label :property, prop.to_sym
+          - if prop.postfix
+            .row.collapse
+              .small-9.columns= text_field :property, prop.to_sym, value: @torrent.value_of_property(prop)
+              .small-3.columns
+                span.postfix= prop.postfix
+          - else
+            = text_field :property, prop.to_sym, value: @torrent.value_of_property(prop)
+  = f.hidden_field :file_uid
   ul.left.button-group
     li= f.submit 'Save', class: "tiny button"
     - if defined? buttons_left
