@@ -35,6 +35,7 @@ group :test do
   gem 'database_cleaner'
   gem 'simplecov'
   gem 'rake'
+  gem 'coveralls', require: false
 end
 
 group :doc do
