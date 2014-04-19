@@ -1,5 +1,7 @@
 # infra
 
+[![Build Status](https://travis-ci.org/infra-torrent/infra.png?branch=master)](https://travis-ci.org/infra-torrent/infra)
+
 ## About the project
 
 infra is a closed bittorrent tracker for smaller communities and companies, to enable your users to share their content in a private Peer2Peer way.
