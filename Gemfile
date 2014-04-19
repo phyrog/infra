@@ -34,6 +34,7 @@ group :test do
   gem 'launchy'
   gem 'database_cleaner'
   gem 'simplecov'
+  gem 'rake'
 end
 
 group :doc do
