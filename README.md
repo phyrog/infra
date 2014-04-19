@@ -1,6 +1,7 @@
 # infra
 
 [![Build Status](https://travis-ci.org/infra-torrent/infra.png?branch=master)](https://travis-ci.org/infra-torrent/infra)
+[![Coverage Status](https://coveralls.io/repos/infra-torrent/infra/badge.png)](https://coveralls.io/r/infra-torrent/infra)
 
 ## About the project
 
