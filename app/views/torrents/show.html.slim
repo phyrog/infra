@@ -33,5 +33,5 @@ dl.tabs(data-tab)
           tr
             th Leechers
             td
-  .content#filelist= formatted_file_list(@torrent)
+  .content#filelist= render 'file_tree', torrent: @torrent
 
