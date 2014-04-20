@@ -14,6 +14,14 @@ class Torrent < ActiveRecord::Base
 
   fuzzily_searchable :name
 
+  def tags_string
+    self.tags.map(&:name).join(" ")
+  end
+
+  def tags_string=(tags)
+    self.tags = tags.split(" ").map { |t| Tag.find_or_create_by(name: t.downcase) }
+  end
+
   def value_of_property(prop)
     self.property_values.find_by(property_id: prop.id)
   end
