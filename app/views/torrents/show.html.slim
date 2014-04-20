@@ -34,10 +34,12 @@ dl.tabs(data-tab)
           tr
             th Leechers
             td
-          - @torrent.properties.uniq.each do |prop|
-            - if val = @torrent.value_of_property(prop) and val.to_s != ""
-              tr
-                th= prop
-                td= val.to_s + prop.postfix.to_s
+        - if not @torrent.property_values.empty?
+          table style="width: 100%"
+            - @torrent.properties.uniq.each do |prop|
+              - if val = @torrent.value_of_property(prop) and val.to_s != ""
+                tr
+                  th= prop
+                  td= val.to_s + prop.postfix.to_s
   .content#filelist= formatted_file_list(@torrent)
 
