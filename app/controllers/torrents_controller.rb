@@ -89,7 +89,7 @@ class TorrentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def torrent_params
-      params.require(:torrent).permit(:name, :description, :file, :file_uid)
+      params.require(:torrent).permit(:name, :description, :file, :file_uid, :tags_string)
     end
 
     def property_params

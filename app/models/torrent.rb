@@ -12,6 +12,14 @@ class Torrent < ActiveRecord::Base
   validates :description, presence: true
   validates :file, presence: true
 
+  def tags_string
+    self.tags.map(&:name).join(" ")
+  end
+
+  def tags_string=(tags)
+    self.tags = tags.split(" ").map { |t| Tag.find_or_create_by(name: t.downcase) }
+  end
+
   def value_of_property(prop)
     self.property_values.find_by(property_id: prop.id)
   end

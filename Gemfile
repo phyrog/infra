@@ -10,6 +10,7 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'uglifier', '>= 1.3.0'
 
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 gem 'jquery-fileupload-rails'
 gem 'foundation-rails'
 gem 'foundation_rails_helper'
