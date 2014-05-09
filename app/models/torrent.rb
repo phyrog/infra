@@ -5,14 +5,20 @@ class Torrent < ActiveRecord::Base
   validates :description, presence: true
   validates :file, presence: true
 
+  fuzzily_searchable :name, :description
+
   def to_h
     @hash ||= file.data.bdecode
   end
 
   def size
     h = self.to_h
-    @size ||= h["info"]["length"] if not h["info"]["files"]
-    @size ||= h["info"]["files"].map { |f| f["length"] }.reduce(:+)
+    if h
+      @size ||= h["info"]["length"] if not h["info"]["files"]
+      @size ||= h["info"]["files"].map { |f| f["length"] }.reduce(:+)
+    else
+      0
+    end
   end
 
   def formatted_size
@@ -21,37 +27,45 @@ class Torrent < ActiveRecord::Base
 
   def no_files
     h = self.to_h
-    if h["info"]["files"]
-      h["info"]["files"].length
+    if h
+      if h["info"]["files"]
+        h["info"]["files"].length
+      else
+        1
+      end
     else
-      1
+      0
     end
   end
 
   def tree_of_files
     h = self.to_h
-    if h["info"]["files"]
-      tree = [{ label: h["info"]["name"], children: [] }]
-      h["info"]["files"].map do |file|
-        t = tree
-        file["path"].unshift(h["info"]["name"]).each do |path|
-          c = t.detect { |p| p[:label] == path }
-          if c
-            t = c[:children]
-          else
-            if path == file["path"].last
-              t << { label: path, length: file["length"] }
-              t = t.detect { |p| p[:label] == path }
+    if h
+      if h["info"]["files"]
+        tree = [{ label: h["info"]["name"], children: [] }]
+        h["info"]["files"].map do |file|
+          t = tree
+          file["path"].unshift(h["info"]["name"]).each do |path|
+            c = t.detect { |p| p[:label] == path }
+            if c
+              t = c[:children]
             else
-              t << { label: path, children: [] }
-              t = t.detect { |p| p[:label] == path }[:children]
+              if path == file["path"].last
+                t << { label: path, length: file["length"] }
+                t = t.detect { |p| p[:label] == path }
+              else
+                t << { label: path, children: [] }
+                t = t.detect { |p| p[:label] == path }[:children]
+              end
             end
           end
         end
+      else
+        tree = [{ label: h["info"]["name"], length: h["info"]["length"] }]
       end
+      tree
     else
-      tree = [{ label: h["info"]["name"], length: h["info"]["length"] }]
+      []
     end
-    tree
   end
 end
