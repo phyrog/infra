@@ -1,3 +1,12 @@
 h1 New torrent
 
-== render 'form', buttons_left: [(link_to 'Back', torrents_path, class: "tiny button")]
+dl.tabs(data-tab)
+  dd.active
+    a href="#form" Edit
+  dd
+    a href="#filelist" Torrent Content
+.tabs-content
+  .content.active#form
+    == render 'form', buttons_left: [(link_to 'Back', torrents_path, class: "tiny button")]
+  .content#filelist
+    = render 'file_tree', torrent: @torrent
