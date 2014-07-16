@@ -13,10 +13,10 @@ html
           h1= link_to("infra", root_path)
       ul.left
         li.has-form
-          = form_tag "/search", method: "get", class: "row collapse"
-            .large-8.columns
+          = form_tag "/search", method: "get", class: "row collapse", id: "search_bar"
+            .large-9.columns
               = text_field_tag :q, params[:q], placeholder: "Search"
-            .large-4.columns
+            .large-3.columns
               = submit_tag "Search", class: "button expand"
 
         

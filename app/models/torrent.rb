@@ -5,7 +5,7 @@ class Torrent < ActiveRecord::Base
   validates :description, presence: true
   validates :file, presence: true
 
-  fuzzily_searchable :name, :description
+  fuzzily_searchable :name
 
   def to_h
     @hash ||= file.data.bdecode
