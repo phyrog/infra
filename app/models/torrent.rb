@@ -14,6 +14,40 @@ class Torrent < ActiveRecord::Base
 
   fuzzily_searchable :name
 
+  def self.find_by_query(query)
+    queries = (query.split " ").map { |e| e.strip }
+    (has_tags, queries) = queries.select_and_delete { |query| /^\+.+/.match(query) }
+    (has_tags_not, queries) = queries.select_and_delete { |query| /^-.+/.match(query) }
+
+    all_torrents = Torrent.all
+
+    if has_tags.empty?
+      torrents_by_tags = all_torrents
+    else
+      torrents_by_tags = has_tags.map do |tag|
+        tag = Tag.find_by(name: tag[1..-1].strip)
+        tag ? tag.torrents : []
+      end.reduce(&:&)
+    end
+
+    if has_tags_not.empty?
+      torrents_by_tags_not = all_torrents
+    else
+      torrents_by_tags_not = all_torrents - has_tags_not.map do |tag|
+        tag = Tag.find_by(name: tag[1..-1].strip)
+        tag ? tag.torrents : []
+      end.reduce(&:+)
+    end
+
+    if queries.join(" ").strip.empty?
+      torrents_by_fuzzy_name = all_torrents
+    else
+      torrents_by_fuzzy_name = Torrent.find_by_fuzzy_name(queries.join " ") + Torrent.find_by_fuzzy_description(queries.join " ")
+    end
+
+    torrents_by_tags & torrents_by_tags_not & torrents_by_fuzzy_name
+  end
+
   def tags_string
     self.tags.map(&:name).join(" ")
   end

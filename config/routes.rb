@@ -1,5 +1,6 @@
 Infra::Application.routes.draw do
   resources :torrents, except: [:new]
+  resources :tags
   get '/search', to: 'torrents#index'
   root 'torrents#index'
 

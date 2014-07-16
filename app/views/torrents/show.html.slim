@@ -34,6 +34,11 @@ dl.tabs(data-tab)
           tr
             th Leechers
             td
+          tr
+            th Tags
+            td
+              - @torrent.tags.each do |tag|
+                span.tag= link_to tag.name, search_path(q: "+" + tag.name)
         - if not @torrent.property_values.empty?
           table style="width: 100%"
             - @torrent.properties.uniq.each do |prop|

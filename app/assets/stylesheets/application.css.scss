@@ -49,3 +49,11 @@ table {
 #search_bar {
   width: 500px;
 }
+
+.tag {
+  @include label();
+  margin-right: 1px;
+  a {
+    color: #ffffff;
+  }
+}

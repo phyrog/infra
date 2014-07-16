@@ -1,0 +1,14 @@
+h2= @tag.name
+
+= link_to "Edit", edit_tag_path(@tag), class: 'button'
+
+- if @tag.properties.length
+  table
+    thead
+      th Name
+      th Type
+    tbody
+      - @tag.properties.each do |property|
+        tr
+          td= property.name
+          td= property.value_type || "String"

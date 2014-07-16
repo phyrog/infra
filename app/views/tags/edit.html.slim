@@ -1,0 +1,21 @@
+h2 Edit #{@tag.name}
+
+- if @tag.properties.length
+  table
+    thead
+      th Name
+      th Suffix
+      th Type
+      th
+    tbody
+      - @tag.properties.each do |property|
+        tr
+          td= property.name
+          td= property.postfix
+          td= property.value_type || "String"
+          td= button_tag "-", class: "tiny"
+      tr
+        td= text_field_tag "property[]", "Autocomplete me"
+        td= text_field_tag "suffix[]"
+        td= select_tag "property_type[]"
+        td= button_tag "+", class: "tiny"
