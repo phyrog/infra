@@ -15,6 +15,8 @@
 //= require jquery-fileupload/basic
 //= require jquery-fileupload/vendor/tmpl
 //= require jquery.timeago
+//= require d3
+//= require tag-it
 //= require foundation
 //= require turbolinks
 //= require_tree .

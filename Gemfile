@@ -15,6 +15,8 @@ gem 'foundation-rails'
 gem 'foundation_rails_helper'
 gem 'turbolinks'
 
+gem 'd3_rails'
+
 gem 'jbuilder', '~> 1.2'
 
 gem 'torrent-ruby', '>= 0.1.6'
