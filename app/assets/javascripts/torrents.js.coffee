@@ -16,15 +16,12 @@ ready = ->
     done: (e, data) ->
       $("#torrent_file_uid").val(data.result.file_uid)
       $("#new_torrent").submit()
-  $("#filelist li:even").css('background-color', '#ffffff')
-  $("#filelist ul > ul").each () ->
-    bc = 'rgb(255, 255, 255)'
-    pb = $(this).parent().css 'border-color'
-    if pb == bc
-      $(this).css 'border-color', 'transparent'
-    else
-      $(this).css 'border-color', bc
-
+  $("#filelist li > ul").parent().addClass('folder')
+  $(".folder > span:first-of-type").on 'click', (e) ->
+    $(this).siblings("ul").toggle();
+  $("#edit_button").on 'click', (e) ->
+    window.location = $(this).attr("href")
+  $("#torrent_description").autosize()
 
 jQuery(document).ready(ready)
 jQuery(document).on('page:load', ready)

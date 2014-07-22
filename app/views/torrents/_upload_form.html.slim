@@ -4,7 +4,8 @@
       | Upload torrent
       = f.file_field :file, label: false
   script#template-upload type="text/x-tmpl"
-    .progress
-      span.meter
+    .progress-overlay
+      .progress
+        span.meter
 = form_for Torrent.new do |f|
   = f.hidden_field :file_uid

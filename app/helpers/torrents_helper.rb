@@ -3,10 +3,10 @@ module TorrentsHelper
     files = []
     files << "<ul>"
     nodes.each do |n|
-      files << "<li><span>#{formatted_file_name(n)}</span>#{extension_label(n)}#{size_label(n)}</li>"
+      files << "<li><span>#{formatted_file_name(n)}</span>#{extension_label(n)}#{size_label(n)}"
       files += html_file_list(n[:children]) if n[:children]
     end
-    files << "</ul>"
+    files << "</li></ul>"
   end
 
   def formatted_file_name(file)

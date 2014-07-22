@@ -42,7 +42,7 @@ class Torrent < ActiveRecord::Base
     if queries.join(" ").strip.empty?
       torrents_by_fuzzy_name = all_torrents
     else
-      torrents_by_fuzzy_name = Torrent.find_by_fuzzy_name(queries.join " ") + Torrent.find_by_fuzzy_description(queries.join " ")
+      torrents_by_fuzzy_name = Torrent.find_by_fuzzy_name(queries.join " ")
     end
 
     torrents_by_tags & torrents_by_tags_not & torrents_by_fuzzy_name

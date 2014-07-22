@@ -19,6 +19,7 @@
 //= require jquery-fileupload/basic
 //= require jquery-fileupload/vendor/tmpl
 //= require jquery.timeago
+//= require jquery.autosize
 //= require tag-it
 //= require foundation
 //= require turbolinks
