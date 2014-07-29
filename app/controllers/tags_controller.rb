@@ -12,6 +12,17 @@ class TagsController < ApplicationController
   end
 
   def update
+    if properties[:act] == "add"
+      @property = Property.find_or_create_by(properties.permit(:name, :postfix, :value_type))
+      @property.postfix = nil if properties[:postfix].empty?
+      @property.save
+      @tag.properties << @property
+      render '_property', layout: false
+    else 
+      prop = @tag.properties.find_by(name: properties[:name])
+      prop.destroy
+      render json: prop, action: 'update'
+    end
   end
 
   def new
@@ -36,5 +47,9 @@ class TagsController < ApplicationController
 
   def tag_params
     params.require(:tag).permit(:name)
+  end
+
+  def properties
+    params.require(:property).permit(:name, :postfix, :value_type, :act)
   end
 end

@@ -1,3 +1,21 @@
 // Place all the styles related to the tags controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+div.table {
+  display: table;
+
+  form {
+    display: table-row-group;
+  }
+  
+  div.thead,
+  div.tr {
+    display: table-row;
+
+    span.td,
+    span.th {
+      display: table-cell;
+    }
+  }
+}

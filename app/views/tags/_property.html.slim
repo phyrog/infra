@@ -1,0 +1,8 @@
+tr id="property_#{@property.id}"
+        td= @property.name
+        td= @property.postfix
+        td= @property.value_type || "String"
+        td= form_for @tag, url: { action: 'update' } do
+          = hidden_field_tag "property[name]", @property.name
+          = hidden_field_tag "property[act]", "rem"
+          = button_tag "-", class: "tiny", name: "act"
