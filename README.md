@@ -19,3 +19,4 @@ infra is not even in alpha stadium yet, so it currently is in no condition to be
 * Remove other trackers from torrent files, so only registered peers can download the files
 * Personalize announce url for each user to make sure only authorized users can download files
 * Custom torrent properties for tagged torrents (e.g. Torrents tagged as Images can have a resolution)
+* Torrent statistics for availability over time, seeders and leechers over time and more
