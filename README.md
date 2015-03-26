@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/infra-torrent/infra.png?branch=master)](https://travis-ci.org/infra-torrent/infra)
 [![Coverage Status](https://coveralls.io/repos/infra-torrent/infra/badge.png)](https://coveralls.io/r/infra-torrent/infra)
-[![Stories in Ready](https://badge.waffle.io/infra-torrent/infra.png?label=ready&title=RFC)](https://waffle.io/infra-torrent/infra)
+[![Stories in Ready](https://badge.waffle.io/infra-torrent/infra.png?label=RFC&title=RFC)](https://waffle.io/infra-torrent/infra)
 
 ## About the project
 
