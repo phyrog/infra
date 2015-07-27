@@ -5,10 +5,14 @@
 # files.
 
 require 'cucumber/rails'
+require 'codeclimate-test-reporter'
 require 'simplecov'
 require 'coveralls'
+
 SimpleCov.start
 Coveralls.wear!
+
+CodeClimate::TestReporter.start
 
 # Capybara defaults to CSS3 selectors rather than XPath.
 # If you'd prefer to use XPath, just uncomment this line and adjust any

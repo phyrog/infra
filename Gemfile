@@ -37,6 +37,7 @@ group :test do
   gem 'simplecov'
   gem 'rake'
   gem 'coveralls', require: false
+  gem "codeclimate-test-reporter", require: false
 end
 
 group :doc do
